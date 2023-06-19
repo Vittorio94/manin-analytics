@@ -1,0 +1,79 @@
+:root {
+  --background: #ecf0f3;
+  --text-dark: #1e2125;
+  --text-medium: #3c3e41;
+  --text-light: #4d4f52;
+  --rule: #dce1e4;
+  --accent: #ff014f;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  touch-action: manipulation;
+  font-family: "Poppins", sans-serif;
+  font-size: 14pt;
+  color: var(--text-light);
+}
+
+select {
+  min-height: 2rem;
+}
+
+section {
+  padding: 2rem 1rem;
+}
+
+a:visited {
+  color: var(--text-light);
+}
+
+#hero {
+  display: grid;
+  justify-content: center;
+  color: var(--text-dark);
+  background-color: var(--background);
+}
+
+#links {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: auto auto;
+  justify-content: center;
+  padding: 1rem;
+}
+
+#menu {
+  display: grid;
+  justify-content: center;
+  border-bottom: 1px solid var(--rule);
+}
+
+#charts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#referrers {
+  border-bottom: 1px solid var(--rule);
+}
+#referrers-grid {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: start;
+}
+
+.referrer-label {
+  font-weight: bold;
+  margin-right: 1rem;
+}
+
+@media (max-width: 800px) {
+  #charts-grid {
+    grid-template-columns: 1fr;
+  }
+}

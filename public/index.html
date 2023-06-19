@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/admin/sidebar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <link rel="stylesheet" href="/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Poppins"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <section id="hero">
+      <h1>MANIN ANALYTICS</h1>
+    </section>
+    <section id="links">
+      <a href="/about/">About</a>
+      <a
+        href="https://github.com/Vittorio94/manin-analytics/tree/main"
+        target="_blank"
+        >Repo</a
+      >
+    </section>
+    <section id="menu">
+      <div>
+        <label for="days-to-load-select">Days to load:</label>
+        <select name="days-to-load" id="days-to-load-select">
+          <option value="7">week</option>
+          <option value="28">month</option>
+          <option value="90">quarter</option>
+          <option value="182">half-year</option>
+          <option value="365">year</option>
+        </select>
+      </div>
+      <div>
+        <label for="unique-checkbox">Show unique visitors:</label>
+        <input id="unique-checkbox" type="checkbox" checked />
+      </div>
+    </section>
+    <section id="referrers">
+      <h2 class="title">Top referrers</h2>
+      <div id="referrers-grid"></div>
+    </section>
+    <section id="charts">
+      <h2 class="title">Visitors</h2>
+      <div id="charts-grid">
+        <div id="country-chart" class="chart"></div>
+        <div id="path-chart" class="chart"></div>
+      </div>
+    </section>
+    <script src="./index.js" type="module"></script>
+    <script>
+      //IMPORTANT: change cloudflare_url to your own worker address
+      const cloudflare_url =
+        "https://analytics-durable-object.vittorio-dev.workers.dev/track";
+
+      const referrer = document.referrer.split("/")[2];
+      // TRACK
+      fetch(cloudflare_url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: JSON.stringify({
+          pathName: window.location.pathname,
+          referrer: referrer ? referrer : "direct",
+        }),
+      }).then(async (res) => {
+        const values = await res.text();
+
+        console.log(values);
+      });
+    </script>
+  </body>
+</html>

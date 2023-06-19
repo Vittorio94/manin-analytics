@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/admin/sidebar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="layout.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Poppins"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <section id="hero">
+      <h1>MANIN ANALYTICS</h1>
+    </section>
+    <section id="links">
+      <a href="/">Home</a>
+      <a
+        href="https://github.com/Vittorio94/manin-analytics/tree/main"
+        target="_blank"
+        >Repo</a
+      >
+    </section>
+    <section id="introduction">
+      <p>
+        Manin Analytics is a GDPR-compliant Google Analytics alternative that
+        runs entirely on the Cloudflare Network.
+      </p>
+      <p>
+        It uses a Cloudflare Durable Object to update visitors data in
+        real-time.
+      </p>
+      <p>
+        Check out the
+        <a href="https://github.com/Vittorio94/manin-analytics/tree/main"
+          >repo</a
+        >
+        for instructions on how to set it up.
+      </p>
+      <p>
+        The name "Manin" comes from the name of the street I live in. The design
+        is intentionally minimal, so you can apply your own styles to it.
+      </p>
+    </section>
+    <section id="created-by">
+      <h3 style="text-align: center">Created by Vittorio Lora</h3>
+    </section>
+    <script>
+      //IMPORTANT: change cloudflare_url to your own worker address
+      const cloudflare_url =
+        "https://analytics-durable-object.vittorio-dev.workers.dev/track";
+
+      const referrer = document.referrer.split("/")[2];
+      // TRACK
+      fetch(cloudflare_url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: JSON.stringify({
+          pathName: window.location.pathname,
+          referrer: referrer ? referrer : "direct",
+        }),
+      }).then(async (res) => {
+        const values = await res.text();
+
+        console.log(values);
+      });
+    </script>
+  </body>
+</html>
