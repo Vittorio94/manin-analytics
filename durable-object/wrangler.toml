@@ -1,0 +1,14 @@
+name = "analytics-durable-object"
+main = "./src/index.mjs"
+compatibility_date = "2023-06-19"
+
+[durable_objects]
+bindings = [{name = "ANALYTICS_DATA", class_name = "Data"}]
+
+[[migrations]]
+tag = "v1" 
+new_classes = ["Data"]
+
+[vars]
+CFP_PASSWORD = "password" # password to match in url params
+DO_NAME = "data" # string used to create the id of the DO using .idFromName()
