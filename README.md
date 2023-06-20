@@ -38,7 +38,7 @@ manin-analytics
 ├── public
 ```
 
-The **durable-object** folder contains the code for the cloudflare worker and durable object. The **public** folder contains a simple website that tracks its own analytics using the worker and displays them using apex charts. It is inteded to be a starting point on which you can build your own analytics dashboard with the data collected from the cloudflare worker.
+The **durable-object** folder contains the code for the cloudflare worker and durable object. The **public** folder contains a simple website that tracks its own analytics using the worker and displays them using apex charts. It is intended to be a starting point on which you can build your own analytics dashboard with the data collected from the cloudflare worker.
 
 ### 4. Publish the worker
 
@@ -54,7 +54,7 @@ Then upload the worker to your cloudflare account by running
 wrangler deploy
 ```
 
-For earlier versions of wrangler, you might need to run `wrangler publish` instead. Wrangler will push the code to cloudflare, and once it's done it will tell you the url of your worker. In my case it was `https://analytics-durable-object.vittorio-dev.workers.dev`, but yours will be different of course. You can also find this url from the cloudflare dashboard, under the "workers" tab.
+For earlier versions of wrangler, you might need to run `wrangler publish` instead. Wrangler will push the code to cloudflare, and once it's done it will tell you the url of your worker. In my case it was `https://analytics-durable-object-prod.vittorio-dev.workers.dev`, but yours will be different of course. You can also find this url from the cloudflare dashboard, under the "workers" tab.
 
 ### 5. Start tracking visitors
 
@@ -125,3 +125,5 @@ The data is divided into daily buckets to avoid excessive size. This can then be
 the code inside the **public** folder is just a simple static website written in plain html, css and javascript. It uses [apexcharts.js](https://apexcharts.com/) to display the data shown above inside some charts, and allows you to select between unique and non-unique visitors.
 
 > **NOTE:** Remember to change the `cloudflare_url` variable to your own url, both in `/index.html` and `/about/index.html`
+
+You can also check out this Check out the [working demo](https://analytics.vittoriolora.com/).
