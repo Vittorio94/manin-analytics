@@ -21,15 +21,36 @@ html {
 }
 
 select {
-  min-height: 2rem;
+  box-shadow: none;
+  background-color: white;
+  border: 1px solid var(--rule);
+  padding: 0.3rem;
+  font-family: inherit;
+  outline: none;
+}
+
+select:disabled {
+  color: var(--rule);
+  border: 1px solid var(--rule);
+  background-color: white;
 }
 
 section {
   padding: 2rem 1rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
+a {
+  color: var(--text-light);
+}
 a:visited {
   color: var(--text-light);
+}
+
+h2 {
+  color: var(--text-dark);
 }
 
 #hero {

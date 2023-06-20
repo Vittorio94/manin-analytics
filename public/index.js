@@ -4,7 +4,7 @@ const state = {
 
 async function getData() {
   const res = await fetch(
-    "https://analytics-durable-object.vittorio-dev.workers.dev/get"
+    "https://analytics-durable-object-prod.vittorio-dev.workers.dev/get"
   );
 
   const analytics = await res.json();
