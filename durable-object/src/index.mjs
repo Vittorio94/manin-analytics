@@ -47,7 +47,10 @@ export class Data {
     if (pathName === "/get") {
       // get keys from DO. This endpoint is not password protected.
       try {
-        const resBody = await this.state.storage.get("analytics");
+        let resBody = await this.state.storage.get("analytics");
+        if (!resBody) {
+          resBody = {};
+        }
 
         return new Response(JSON.stringify(resBody), {
           status: 200,
@@ -157,7 +160,6 @@ export class Data {
         });
       }
     }
-
     return new Response("invalid pathName", {
       status: 404,
       headers: corsHeaders,

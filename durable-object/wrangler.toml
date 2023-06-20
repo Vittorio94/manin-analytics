@@ -1,4 +1,4 @@
-name = "analytics-durable-object"
+name = "analytics-durable-object-dev"
 main = "./src/index.mjs"
 compatibility_date = "2023-06-19"
 
@@ -10,5 +10,4 @@ tag = "v1"
 new_classes = ["Data"]
 
 [vars]
-CFP_PASSWORD = "password" # password to match in url params
 DO_NAME = "data" # string used to create the id of the DO using .idFromName()
