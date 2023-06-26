@@ -214,7 +214,22 @@ function createCharts() {
     },
     yaxis: {
       min: 0,
+      labels: {
+        formatter: function (val) {
+          return val.toFixed(0);
+        },
+      },
     },
+    responsive: [
+      {
+        breakpoint: 480,
+        options: {
+          chart: {
+            height: 300,
+          },
+        },
+      },
+    ],
     series: state.countries.map((country) => {
       return {
         name: country,
@@ -249,7 +264,22 @@ function createCharts() {
     },
     yaxis: {
       min: 0,
+      labels: {
+        formatter: function (val) {
+          return val.toFixed(0);
+        },
+      },
     },
+    responsive: [
+      {
+        breakpoint: 480,
+        options: {
+          chart: {
+            height: 300,
+          },
+        },
+      },
+    ],
     series: state.pathNames.map((pathName) => {
       return {
         name: pathName,

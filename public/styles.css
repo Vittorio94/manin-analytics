@@ -58,10 +58,14 @@ h2 {
   justify-content: center;
   color: var(--text-dark);
   background-color: var(--background);
+  padding: 0;
 }
 
 #hero img {
-  height: 3rem;
+  width: 100vw;
+  height: auto;
+  max-width: 20rem;
+  padding: 0rem 1rem;
 }
 
 #links {
